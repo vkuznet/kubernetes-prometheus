@@ -12,6 +12,10 @@ data:
       evaluation_interval: 5s
 
     scrape_configs:
+      - job_name: 'das2go-service'
+        static_configs:
+            - targets: ['cmsweb-k8s.web.cern.ch:7200']
+
       - job_name: 'kubernetes-apiservers'
 
         kubernetes_sd_configs:
