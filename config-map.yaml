@@ -15,6 +15,9 @@ data:
       - job_name: 'das2go-service'
         static_configs:
             - targets: ['cmsweb-k8s.web.cern.ch:7200']
+      - job_name: 'reqmgr-service'
+        static_configs:
+            - targets: ['cmsweb-k8s.web.cern.ch:7300']
 
       - job_name: 'kubernetes-apiservers'
 
