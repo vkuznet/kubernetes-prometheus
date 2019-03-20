@@ -14,7 +14,16 @@ data:
     scrape_configs:
       - job_name: 'das2go-service'
         static_configs:
-            - targets: ['cmsweb-k8s.web.cern.ch:7200']
+            - targets: ['das2go.default.svc.cluster.local:18217']
+      - job_name: 'dbs-service'
+        static_configs:
+            - targets: ['dbs.default.svc.cluster.local:18250']
+      - job_name: 'reqmgr-service'
+        static_configs:
+            - targets: ['reqmgr.default.svc.cluster.local:18246']
+      - job_name: 'frontend-service'
+        static_configs:
+            - targets: ['frontend.default.svc.cluster.local:18443']
 
       - job_name: 'kubernetes-apiservers'
 
