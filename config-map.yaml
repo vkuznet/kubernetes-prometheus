@@ -30,9 +30,6 @@ data:
       - job_name: 'crabcache-service'
         static_configs:
             - targets: ['crabcache.default.svc.cluster.local:18271']
-      - job_name: 'couchdb-service'
-        static_configs:
-            - targets: ['couchdb.default.svc.cluster.local:15984']
       - job_name: 'frontend-service'
         static_configs:
             - targets: ['frontend.default.svc.cluster.local:18443']
@@ -125,33 +122,33 @@ data:
           target_label: __metrics_path__
           replacement: /api/v1/nodes/${1}/proxy/metrics/cadvisor
       
-      - job_name: 'kubernetes-service-endpoints'
+#       - job_name: 'kubernetes-service-endpoints'
 
-        kubernetes_sd_configs:
-        - role: endpoints
+#         kubernetes_sd_configs:
+#         - role: endpoints
 
-        relabel_configs:
-        - source_labels: [__meta_kubernetes_service_annotation_prometheus_io_scrape]
-          action: keep
-          regex: true
-        - source_labels: [__meta_kubernetes_service_annotation_prometheus_io_scheme]
-          action: replace
-          target_label: __scheme__
-          regex: (https?)
-        - source_labels: [__meta_kubernetes_service_annotation_prometheus_io_path]
-          action: replace
-          target_label: __metrics_path__
-          regex: (.+)
-        - source_labels: [__address__, __meta_kubernetes_service_annotation_prometheus_io_port]
-          action: replace
-          target_label: __address__
-          regex: ([^:]+)(?::\d+)?;(\d+)
-          replacement: $1:$2
-        - action: labelmap
-          regex: __meta_kubernetes_service_label_(.+)
-        - source_labels: [__meta_kubernetes_namespace]
-          action: replace
-          target_label: kubernetes_namespace
-        - source_labels: [__meta_kubernetes_service_name]
-          action: replace
-          target_label: kubernetes_name
+#         relabel_configs:
+#         - source_labels: [__meta_kubernetes_service_annotation_prometheus_io_scrape]
+#           action: keep
+#           regex: true
+#         - source_labels: [__meta_kubernetes_service_annotation_prometheus_io_scheme]
+#           action: replace
+#           target_label: __scheme__
+#           regex: (https?)
+#         - source_labels: [__meta_kubernetes_service_annotation_prometheus_io_path]
+#           action: replace
+#           target_label: __metrics_path__
+#           regex: (.+)
+#         - source_labels: [__address__, __meta_kubernetes_service_annotation_prometheus_io_port]
+#           action: replace
+#           target_label: __address__
+#           regex: ([^:]+)(?::\d+)?;(\d+)
+#           replacement: $1:$2
+#         - action: labelmap
+#           regex: __meta_kubernetes_service_label_(.+)
+#         - source_labels: [__meta_kubernetes_namespace]
+#           action: replace
+#           target_label: kubernetes_namespace
+#         - source_labels: [__meta_kubernetes_service_name]
+#           action: replace
+#           target_label: kubernetes_name
