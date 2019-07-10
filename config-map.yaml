@@ -18,9 +18,9 @@ data:
       - job_name: 'dbs-service'
         static_configs:
             - targets: ['dbs.default.svc.cluster.local:19254', 'dbs.default.svc.cluster.local:18251', 'dbs.default.svc.cluster.local:18252', 'dbs.default.svc.cluster.local:18253', 'dbs.default.svc.cluster.local:18254', 'dbs.default.svc.cluster.local:18255']
-      - job_name: 'reqmgr-service'
+      - job_name: 'reqmgr2-service'
         static_configs:
-            - targets: ['reqmgr.default.svc.cluster.local:18240']
+            - targets: ['reqmgr2.default.svc.cluster.local:18240']
       - job_name: 'crabserver-service'
         static_configs:
             - targets: ['crabserver.default.svc.cluster.local:18270']
