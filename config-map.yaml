@@ -12,24 +12,18 @@ data:
       evaluation_interval: 5s
 
     scrape_configs:
-      - job_name: 'das2go-service'
+      - job_name: 'das-service'
         static_configs:
-            - targets: ['das2go.default.svc.cluster.local:18217']
+            - targets: ['das.default.svc.cluster.local:18217', 'das.default.svc.cluster.local:18230']
       - job_name: 'dbs-service'
         static_configs:
-            - targets: ['dbs.default.svc.cluster.local:18250']
+            - targets: ['dbs.default.svc.cluster.local:19254', 'dbs.default.svc.cluster.local:18251', 'dbs.default.svc.cluster.local:18252', 'dbs.default.svc.cluster.local:18253', 'dbs.default.svc.cluster.local:18254', 'dbs.default.svc.cluster.local:18255']
       - job_name: 'reqmgr-service'
         static_configs:
-            - targets: ['reqmgr.default.svc.cluster.local:18246']
-      - job_name: 'reqmon-service'
-        static_configs:
-            - targets: ['reqmon.default.svc.cluster.local:18249']
+            - targets: ['reqmgr.default.svc.cluster.local:18240']
       - job_name: 'crabserver-service'
         static_configs:
             - targets: ['crabserver.default.svc.cluster.local:18270']
-      - job_name: 'crabcache-service'
-        static_configs:
-            - targets: ['crabcache.default.svc.cluster.local:18271']
       - job_name: 'frontend-service'
         static_configs:
             - targets: ['frontend.default.svc.cluster.local:18443']
